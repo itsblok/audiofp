@@ -696,4 +696,4 @@ Numbers from a synthetic 4-chord library on an ordinary laptop:
 
 ## License
 
-MIT
+[MIT](LICENSE)
