@@ -12,10 +12,10 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/itsblok/audiofp/audio"
-	"github.com/itsblok/audiofp/dsp"
-	"github.com/itsblok/audiofp/fingerprint"
-	"github.com/itsblok/audiofp/storage"
+	"github.com/cheemney/audiofp/audio"
+	"github.com/cheemney/audiofp/dsp"
+	"github.com/cheemney/audiofp/fingerprint"
+	"github.com/cheemney/audiofp/storage"
 )
 
 // Pipeline holds the DSP configuration and executes the audio processing chain.
@@ -61,7 +61,8 @@ func NewPipeline() *Pipeline {
 // name in store, and persists its hashes. Returns an IndexResult on success.
 //
 // The full pipeline:
-//   io.Reader → DecodeWAV → Spectrogram → Peaks → Constellation → Hashes → StoreBatch
+//
+//	io.Reader → DecodeWAV → Spectrogram → Peaks → Constellation → Hashes → StoreBatch
 func (p *Pipeline) Index(r io.Reader, name string, store storage.Store) (IndexResult, error) {
 	pcm, err := audio.DecodeWAV(r)
 	if err != nil {
@@ -73,9 +74,9 @@ func (p *Pipeline) Index(r io.Reader, name string, store storage.Store) (IndexRe
 		return IndexResult{}, fmt.Errorf("spectrogram: %w", err)
 	}
 
-	peaks   := dsp.ExtractPeaks(spec, p.peakCfg)
+	peaks := dsp.ExtractPeaks(spec, p.peakCfg)
 	constel := fingerprint.FromPeaks(peaks)
-	hashes  := fingerprint.GenerateHashes(constel, p.hasherCfg)
+	hashes := fingerprint.GenerateHashes(constel, p.hasherCfg)
 
 	songID, err := store.RegisterSong(name)
 	if err != nil {
@@ -83,10 +84,10 @@ func (p *Pipeline) Index(r io.Reader, name string, store storage.Store) (IndexRe
 	}
 
 	hashVals := make([]uint32, len(hashes))
-	offsets  := make([]int, len(hashes))
+	offsets := make([]int, len(hashes))
 	for i, h := range hashes {
 		hashVals[i] = h.Hash
-		offsets[i]  = h.TimeOffset
+		offsets[i] = h.TimeOffset
 	}
 	if err := store.StoreBatch(hashVals, songID, offsets); err != nil {
 		return IndexResult{}, fmt.Errorf("store fingerprints: %w", err)
@@ -104,7 +105,8 @@ func (p *Pipeline) Index(r io.Reader, name string, store storage.Store) (IndexRe
 // against the store. Returns (result, true) on a confident match.
 //
 // The full pipeline:
-//   io.Reader → DecodeWAV → Spectrogram → Peaks → Constellation → Hashes → Match
+//
+//	io.Reader → DecodeWAV → Spectrogram → Peaks → Constellation → Hashes → Match
 func (p *Pipeline) Query(r io.Reader, store storage.Store) (QueryResult, bool, error) {
 	pcm, err := audio.DecodeWAV(r)
 	if err != nil {
@@ -116,7 +118,7 @@ func (p *Pipeline) Query(r io.Reader, store storage.Store) (QueryResult, bool, e
 		return QueryResult{}, false, fmt.Errorf("spectrogram: %w", err)
 	}
 
-	peaks   := dsp.ExtractPeaks(spec, p.peakCfg)
+	peaks := dsp.ExtractPeaks(spec, p.peakCfg)
 	constel := fingerprint.FromPeaks(peaks)
 
 	result, ok := fingerprint.Match(constel, store, p.matchCfg)

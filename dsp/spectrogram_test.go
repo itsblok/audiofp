@@ -4,7 +4,7 @@ import (
 	"math"
 	"testing"
 
-	"github.com/itsblok/audiofp/audio"
+	"github.com/cheemney/audiofp/audio"
 )
 
 func TestCompute_FrameCount(t *testing.T) {

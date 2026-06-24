@@ -3,7 +3,7 @@ package fingerprint
 import (
 	"testing"
 
-	"github.com/itsblok/audiofp/dsp"
+	"github.com/cheemney/audiofp/dsp"
 )
 
 func TestFromPeaks_Length(t *testing.T) {

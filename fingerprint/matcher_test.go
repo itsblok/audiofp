@@ -4,9 +4,9 @@ import (
 	"math"
 	"testing"
 
-	"github.com/itsblok/audiofp/audio"
-	"github.com/itsblok/audiofp/dsp"
-	"github.com/itsblok/audiofp/storage"
+	"github.com/cheemney/audiofp/audio"
+	"github.com/cheemney/audiofp/dsp"
+	"github.com/cheemney/audiofp/storage"
 )
 
 // buildConstellationFromSine runs the full DSP pipeline on a synthetic

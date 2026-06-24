@@ -16,8 +16,8 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/itsblok/audiofp/audio"
-	"github.com/itsblok/audiofp/storage"
+	"github.com/cheemney/audiofp/audio"
+	"github.com/cheemney/audiofp/storage"
 )
 
 // --- Test helpers ---

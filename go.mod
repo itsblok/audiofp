@@ -1,4 +1,4 @@
-module github.com/itsblok/audiofp
+module github.com/cheemney/audiofp
 
 go 1.26.0
 

@@ -2,7 +2,7 @@
 package dsp
 
 import (
-	"github.com/itsblok/audiofp/audio"
+	"github.com/cheemney/audiofp/audio"
 )
 
 // SpectrogramConfig controls how the STFT is computed.

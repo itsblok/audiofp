@@ -15,8 +15,8 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/itsblok/audiofp/audio"
-	"github.com/itsblok/audiofp/storage"
+	"github.com/cheemney/audiofp/audio"
+	"github.com/cheemney/audiofp/storage"
 )
 
 const (

@@ -9,7 +9,7 @@ package fingerprint
 import (
 	"sort"
 
-	"github.com/itsblok/audiofp/dsp"
+	"github.com/cheemney/audiofp/dsp"
 )
 
 // Point is a single landmark in the constellation map.

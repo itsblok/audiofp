@@ -374,7 +374,7 @@ audiofp/
 
 ```bash
 # Clone the repository
-git clone https://github.com/itsblok/audiofp
+git clone https://github.com/cheemney/audiofp
 cd audiofp
 
 # Download dependencies (go-sqlite3 fetches from github.com)

@@ -8,7 +8,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/itsblok/audiofp/storage"
+	"github.com/cheemney/audiofp/storage"
 )
 
 // Server is the HTTP server for the fingerprinting engine.
@@ -40,10 +40,11 @@ func NewServer(store storage.Store, pipeline *Pipeline, logger *log.Logger) *Ser
 // routes registers all API endpoints on a fresh ServeMux.
 //
 // Route table:
-//   GET  /health   — liveness probe
-//   GET  /songs    — list indexed songs + store stats
-//   POST /songs    — index a new WAV file
-//   POST /query    — identify an unknown WAV clip
+//
+//	GET  /health   — liveness probe
+//	GET  /songs    — list indexed songs + store stats
+//	POST /songs    — index a new WAV file
+//	POST /query    — identify an unknown WAV clip
 func (s *Server) routes() http.Handler {
 	mux := http.NewServeMux()
 

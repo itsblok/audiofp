@@ -19,8 +19,8 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/itsblok/audiofp/api"
-	"github.com/itsblok/audiofp/storage"
+	"github.com/cheemney/audiofp/api"
+	"github.com/cheemney/audiofp/storage"
 )
 
 func main() {

@@ -12,7 +12,7 @@
 package fingerprint
 
 import (
-	"github.com/itsblok/audiofp/storage"
+	"github.com/cheemney/audiofp/storage"
 )
 
 // MatchResult holds the output of a successful match.
